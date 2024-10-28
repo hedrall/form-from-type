@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "お問い合わせの種類": {
+            "enum": [
+                "ご要望",
+                "ご質問",
+                "その他"
+            ],
+            "title": "お問い合わせの種類",
+            "type": "string"
+        },
+        "お問い合わせ内容": {
+            "title": "お問い合わせ内容",
+            "type": "string"
+        },
+        "備考": {
+            "title": "備考",
+            "type": "string"
+        },
+        "日中の連絡先": {
+            "anyOf": [
+                {
+                    "properties": {
+                        "address": {
+                            "title": "address",
+                            "type": "string"
+                        },
+                        "type": {
+                            "const": "email ",
+                            "title": "type",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "type"
+                    ],
+                    "title": "Eメールアドレス",
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "number": {
+                            "title": "number",
+                            "type": "string"
+                        },
+                        "type": {
+                            "const": "phone",
+                            "title": "type",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "number",
+                        "type"
+                    ],
+                    "title": "お電話番号",
+                    "type": "object"
+                }
+            ],
+            "title": "日中の連絡先"
+        },
+        "氏名": {
+            "title": "氏名",
+            "type": "string"
+        }
+    },
+    "required": [
+        "お問い合わせの種類",
+        "お問い合わせ内容",
+        "日中の連絡先",
+        "氏名"
+    ],
+    "type": "object"
+}
+
